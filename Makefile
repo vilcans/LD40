@@ -1,5 +1,5 @@
-PROJECT=VideoGamesAreMyLife
-VERSION=0.1.1
+PROJECT=PostmanPot
+VERSION=0.1.0
 FILENAME=$(PROJECT)-$(VERSION)
 RELEASE_DIR=Build/release
 
