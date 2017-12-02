@@ -4,14 +4,18 @@ using UnityEngine;
 [RequireComponent(typeof(PolygonCollider2D))]
 public class MeshFromPolygon : MonoBehaviour {
 
-    void Awake() {
-        PolygonCollider2D poly = GetComponent<PolygonCollider2D>();
+    private Mesh inEditorMesh;
 
+    void Awake() {
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         if(meshFilter == null) {
             meshFilter = gameObject.AddComponent<MeshFilter>();
         }
-        Mesh mesh = meshFilter.mesh;
+        UpdateMesh(meshFilter.mesh);
+    }
+
+    private void UpdateMesh(Mesh mesh) {
+        PolygonCollider2D poly = GetComponent<PolygonCollider2D>();
 
         List<Vector3> meshVertices = new List<Vector3>();
         List<int> meshIndices = new List<int>();
@@ -19,7 +23,6 @@ public class MeshFromPolygon : MonoBehaviour {
 
         for(int pathIndex = 0, pathCount = poly.pathCount; pathIndex < pathCount; ++pathIndex) {
             Vector2[] path = poly.GetPath(pathIndex);
-            Debug.LogFormat("path {0}: {1} vertices", pathIndex, path.Length);
             Triangulator triangulator = new Triangulator(path);
             int[] indices = triangulator.Triangulate();
 
@@ -35,5 +38,19 @@ public class MeshFromPolygon : MonoBehaviour {
         mesh.vertices = meshVertices.ToArray();
         mesh.uv = meshUVs.ToArray();
         mesh.triangles = meshIndices.ToArray();
+        mesh.RecalculateNormals();
+    }
+
+    private void OnDrawGizmos() {
+        if(Application.isPlaying) {
+            return;
+        }
+        if(inEditorMesh == null) {
+            inEditorMesh = new Mesh();
+        }
+        UpdateMesh(inEditorMesh);
+        Transform t = transform;
+        Gizmos.DrawMesh(inEditorMesh, t.position, t.rotation, t.lossyScale);
+        Gizmos.DrawWireMesh(inEditorMesh, t.position, t.rotation, t.lossyScale);
     }
 }
