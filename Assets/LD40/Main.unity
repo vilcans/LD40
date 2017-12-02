@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 247855136}
   - component: {fileID: 247855135}
   - component: {fileID: 247855137}
+  - component: {fileID: 247855138}
   m_Layer: 0
   m_Name: FrontWheel
   m_TagString: Untagged
@@ -302,9 +303,9 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 10
   m_LinearDrag: 0
-  m_AngularDrag: 0.37
+  m_AngularDrag: 2
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 95846c890000401428b23bb21b9d3830, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -317,13 +318,20 @@ CircleCollider2D:
   m_GameObject: {fileID: 247855134}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 95846c890000401428b23bb21b9d3830, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.52
+--- !u!33 &247855138
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 247855134}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &247855139
 Transform:
   m_ObjectHideFlags: 0
@@ -331,7 +339,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 247855134}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.73, y: -1.32, z: 0}
+  m_LocalPosition: {x: 2.639, y: -1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1225439028}
@@ -610,7 +618,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 50
+  m_Mass: 1200
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -720,16 +728,16 @@ WheelJoint2D:
   m_GameObject: {fileID: 1225439025}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 247855136}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 2.3086302, y: -1.3799719}
-  m_ConnectedAnchor: {x: 0.048630238, y: 0.000028014183}
+  m_Anchor: {x: 2.639, y: -1.25}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
     m_DampingRatio: 0.3
-    m_Frequency: 3
+    m_Frequency: 20
     m_Angle: 90
   m_UseMotor: 1
   m_Motor:
@@ -743,16 +751,16 @@ WheelJoint2D:
   m_GameObject: {fileID: 1225439025}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1243388415}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: -0.60136974, y: -1.349972}
-  m_ConnectedAnchor: {x: 0.048630238, y: 0.000028014183}
+  m_Anchor: {x: -1.0800002, y: -1.25}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
     m_DampingRatio: 0.3
-    m_Frequency: 3
+    m_Frequency: 20
     m_Angle: 90
   m_UseMotor: 1
   m_Motor:
@@ -769,6 +777,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b98317a8d68364dbbc570036333447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxTorque: 10000
+  maxSpeed: 500
+  rotationSpeed: 900
 --- !u!1 &1243388411
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +791,7 @@ GameObject:
   - component: {fileID: 1243388415}
   - component: {fileID: 1243388414}
   - component: {fileID: 1243388413}
+  - component: {fileID: 1243388416}
   m_Layer: 0
   m_Name: BackWheel
   m_TagString: Untagged
@@ -794,7 +806,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1243388411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.08, y: -1.37, z: 0}
+  m_LocalPosition: {x: -1.08, y: -1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1225439028}
@@ -808,7 +820,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1243388411}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 95846c890000401428b23bb21b9d3830, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -862,13 +874,20 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 10
   m_LinearDrag: 0
-  m_AngularDrag: 0.37
+  m_AngularDrag: 2
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 95846c890000401428b23bb21b9d3830, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!33 &1243388416
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243388411}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1254830431
 GameObject:
   m_ObjectHideFlags: 0
