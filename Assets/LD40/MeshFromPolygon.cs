@@ -30,7 +30,7 @@ public class MeshFromPolygon : MonoBehaviour {
 
             int indexOffset = meshVertices.Count;
             for(int i = 0, len = path.Length; i < len; ++i) {
-                meshVertices.Add(new Vector3(path[i].x, path[i].y, 0));
+                meshVertices.Add(new Vector3(path[i].x + poly.offset.x, path[i].y + poly.offset.y, 0));
                 meshUVs.Add(path[i] * uvScale);
             }
             for(int i = 0, len = indices.Length; i < len; ++i) {
