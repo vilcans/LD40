@@ -3,7 +3,7 @@
 public class Driving : MonoBehaviour {
     public float maxTorque = 10000;
     public float maxSpeed = 500.0f;
-    public float rotationTorque = 10000f;
+    private float rotationTorquePerKg = 8.33f;
     private float acceleration = 5;
 
     private WheelJoint2D[] wheels;
@@ -45,7 +45,7 @@ public class Driving : MonoBehaviour {
 
         audio.pitch = Mathf.LerpUnclamped(idleAudioPitch, maxSpeedPitch, Mathf.Abs(currentSpeed) / maxSpeed);
 
-        float rotation = Input.GetAxis("Horizontal") * -rotationTorque;
+        float rotation = Input.GetAxis("Horizontal") * -rotationTorquePerKg * body.mass;
         body.AddTorque(rotation);
     }
 }
