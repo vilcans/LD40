@@ -26,10 +26,12 @@ public class Driving : MonoBehaviour {
         float wantedSpeed = Input.GetAxis("Vertical") * -maxSpeed;
         currentSpeed = Mathf.MoveTowards(currentSpeed, wantedSpeed, acceleration);
 
+        float wheelSpeed = 0;
         if(wantedSpeed == 0) {
             // Put engine in neutral when buttons are released
             for(int i = 0, len = wheels.Length; i < len; ++i) {
                 wheels[i].useMotor = false;
+                wheelSpeed += wheels[i].GetComponent<Rigidbody2D>().angularVelocity;
             }
         }
         else {
@@ -39,11 +41,15 @@ public class Driving : MonoBehaviour {
             };
             for(int i = 0, len = wheels.Length; i < len; ++i) {
                 wheels[i].motor = motor;
+                wheelSpeed += wheels[i].GetComponent<Rigidbody2D>().angularVelocity;
             }
 
         }
 
-        audio.pitch = Mathf.LerpUnclamped(idleAudioPitch, maxSpeedPitch, Mathf.Abs(currentSpeed) / maxSpeed);
+        audio.pitch = (
+            .5f * Mathf.LerpUnclamped(idleAudioPitch, maxSpeedPitch, Mathf.Abs(currentSpeed) / maxSpeed) +
+            .5f * Mathf.LerpUnclamped(idleAudioPitch, maxSpeedPitch, Mathf.Abs(wheelSpeed * 10) / maxSpeed)
+        );
 
         float rotation = Input.GetAxis("Horizontal") * -rotationTorquePerKg * body.mass;
         body.AddTorque(rotation);
