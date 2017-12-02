@@ -6,6 +6,8 @@ public class MeshFromPolygon : MonoBehaviour {
 
     private Mesh inEditorMesh;
 
+    private float uvScale = 1.0f / 16;
+
     void Awake() {
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         if(meshFilter == null) {
@@ -29,7 +31,7 @@ public class MeshFromPolygon : MonoBehaviour {
             int indexOffset = meshVertices.Count;
             for(int i = 0, len = path.Length; i < len; ++i) {
                 meshVertices.Add(new Vector3(path[i].x, path[i].y, 0));
-                meshUVs.Add(path[i]);
+                meshUVs.Add(path[i] * uvScale);
             }
             for(int i = 0, len = indices.Length; i < len; ++i) {
                 meshIndices.Add(indices[i] + indexOffset);
