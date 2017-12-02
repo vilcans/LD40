@@ -3,7 +3,7 @@
 public class Driving : MonoBehaviour {
     public float maxTorque = 10000;
     public float maxSpeed = 500.0f;
-    public float rotationSpeed = 900f;
+    public float rotationTorque = 10000f;
     private float acceleration = 5;
 
     private WheelJoint2D[] wheels;
@@ -26,7 +26,8 @@ public class Driving : MonoBehaviour {
         float wantedSpeed = Input.GetAxis("Vertical") * -maxSpeed;
         currentSpeed = Mathf.MoveTowards(currentSpeed, wantedSpeed, acceleration);
 
-        if(false) {
+        if(wantedSpeed == 0) {
+            // Put engine in neutral when buttons are released
             for(int i = 0, len = wheels.Length; i < len; ++i) {
                 wheels[i].useMotor = false;
             }
@@ -44,7 +45,7 @@ public class Driving : MonoBehaviour {
 
         audio.pitch = Mathf.LerpUnclamped(idleAudioPitch, maxSpeedPitch, Mathf.Abs(currentSpeed) / maxSpeed);
 
-        float rotation = Input.GetAxis("Horizontal") * -rotationSpeed;
+        float rotation = Input.GetAxis("Horizontal") * -rotationTorque;
         body.AddTorque(rotation);
     }
 }
