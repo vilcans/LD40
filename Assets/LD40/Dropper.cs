@@ -4,11 +4,15 @@ public class Dropper : Interactible {
 
     private Transform item;
     private float? timeToDrop;
+    private Vector3 dropPoint;
+
+    void Awake() {
+        dropPoint = transform.Find("DropPoint").position;
+    }
 
     public override void Interact() {
         //Debug.LogFormat("Interacting with Dropper {0}", this);
         if(!timeToDrop.HasValue) {
-            item = transform.Find("Item");
             if(item != null) {
                 timeToDrop = 1.0f;
             }
@@ -25,12 +29,22 @@ public class Dropper : Interactible {
             value = newValue;
             if(value <= 0) {
                 timeToDrop = null;
-                item.transform.SetParent(null);
                 item.GetComponent<Rigidbody2D>().simulated = true;
+                item = null;
             }
             else {
                 timeToDrop = value;
             }
         }
+    }
+
+    public void AddDelivery(Logistics.Delivery delivery) {
+        if(item != null) {
+            Debug.LogFormat("Can't add delivery - already have one");
+            return;
+        }
+        GameObject obj = Instantiate(delivery.prefab, dropPoint, Quaternion.Euler(0, 0, Random.Range(0, 4) * 90f));
+        obj.GetComponent<Rigidbody2D>().simulated = false;
+        item = obj.transform;
     }
 }
