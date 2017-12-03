@@ -6,7 +6,7 @@ public class MeshFromPolygon : MonoBehaviour {
 
     private Mesh inEditorMesh;
 
-    private float uvScale = 1.0f / 16;
+    private float uvScale = 1f / 4;
 
     void Awake() {
         MeshFilter meshFilter = GetComponent<MeshFilter>();
