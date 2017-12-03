@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Logistics : MonoBehaviour {
+
+    public Text terminal;
 
     public class Delivery {
         public Dropper from;
@@ -49,5 +53,26 @@ public class Logistics : MonoBehaviour {
             prefab = boxPrefabs[Random.Range(0, boxPrefabs.Count)],
         };
         delivery.from.AddDelivery(delivery);
+
+        UpdateTerminal();
+    }
+
+    void UpdateTerminal() {
+        var s = new StringBuilder();
+        for(int i = 0, len = droppers.Length; i < len; ++i) {
+            Dropper d = droppers[i];
+            s.Append("C");
+            s.Append(i + 1);
+            s.Append("\n");
+            if(d.item != null) {
+                s.Append(" -> ");
+                s.Append(d.item.GetComponentInChildren<Box>().destination.address);
+            }
+            else {
+                s.Append(" No pickup");
+            }
+            s.Append("\n");
+        }
+        terminal.text = s.ToString();
     }
 }

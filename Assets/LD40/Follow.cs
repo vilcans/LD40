@@ -2,7 +2,7 @@
 
 public class Follow : MonoBehaviour {
     public Transform followTransform;
-    private Vector3 offset = Vector3.back * 10;
+    public Vector3 offset = Vector3.back * 10;
 
     private new Transform transform;
 

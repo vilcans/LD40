@@ -2,6 +2,9 @@
 
 public class Box : MonoBehaviour {
 
+    [System.NonSerialized]
+    public Dropoff destination;
+
     private int numberOfCollisions;
     private float timeInCollision;
 

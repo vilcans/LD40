@@ -8,7 +8,7 @@ public class Dropper : Interactible {
     private Transform mug;
     private Vector3 mugPosition;
 
-    private Transform item;
+    public Transform item;
     private float? timeToDrop;
     private Vector3 dropPoint;
 
@@ -56,6 +56,7 @@ public class Dropper : Interactible {
         GameObject obj = Instantiate(delivery.prefab, dropPoint, Quaternion.Euler(0, 0, Random.Range(0, 4) * 90f));
         obj.GetComponent<Rigidbody2D>().simulated = false;
         obj.GetComponentInChildren<Text>().text = delivery.to.GetComponent<Dropoff>().address;
+        obj.GetComponent<Box>().destination = delivery.to;
         item = obj.transform;
     }
 }
