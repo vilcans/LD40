@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 105674219}
   m_LocalRotation: {x: -0, y: -0, z: -0.010242492, w: 0.99994755}
-  m_LocalPosition: {x: 0.701, y: -0.566, z: 0}
+  m_LocalPosition: {x: -0.97, y: -0.5, z: 0}
   m_LocalScale: {x: 0.43292886, y: 0.43292874, z: 0.43292874}
   m_Children: []
   m_Father: {fileID: 1225439028}
@@ -316,7 +316,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 126385713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.44, y: 0.19, z: 0}
+  m_LocalPosition: {x: -51.151, y: -1.1899999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -453,7 +453,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 203785693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.845, y: 1.326, z: 0}
+  m_LocalPosition: {x: -50.556004, y: -0.0539999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -561,7 +561,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 247855134}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.158, y: -1.25, z: 0}
+  m_LocalPosition: {x: 1.487, y: -1.184, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1225439028}
@@ -932,7 +932,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 584291472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.910004, y: 1.3199999, z: 0}
+  m_LocalPosition: {x: -52.621006, y: -0.059999943, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1069,7 +1069,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 935689502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6, y: -1.57, z: 0}
+  m_LocalPosition: {x: -0.07099998, y: -1.5040001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1225439028}
@@ -1109,7 +1109,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 1.5999985, y: -1.57}
+  m_ConnectedAnchor: {x: -0.070999146, y: -1.5040001}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &978413712
@@ -1198,7 +1198,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 978413712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.82, y: 0.20999996, z: 0}
+  m_LocalPosition: {x: -52.531002, y: -1.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1311,8 +1311,12 @@ PolygonCollider2D:
       - {x: -30.519957, y: -1.4410467}
       - {x: -36.396084, y: -0.4544134}
       - {x: -42.658226, y: -1.2580903}
-      - {x: -51.961716, y: -0.55379486}
+      - {x: -47.165424, y: -0.563988}
+      - {x: -51.961716, y: -0.563988}
+      - {x: -53.29634, y: -0.49305272}
+      - {x: -55.963356, y: -0.831259}
       - {x: -57.981983, y: -1.4135377}
+      - {x: -60.602283, y: -1.5696948}
       - {x: -62.079613, y: -1.5135643}
       - {x: -66.26055, y: -1.1193931}
       - {x: -65.13088, y: -2.0329792}
@@ -1435,7 +1439,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.75, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1467,7 +1471,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1225439025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.39, y: 0.14, z: 0}
+  m_LocalPosition: {x: -50.43, y: -1.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 247855139}
@@ -1536,7 +1540,7 @@ WheelJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 3.158, y: -1.25}
+  m_Anchor: {x: 1.4869995, y: -1.184}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
     m_DampingRatio: 1
@@ -1559,7 +1563,7 @@ WheelJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0.26199996, y: -1.25}
+  m_Anchor: {x: -1.4090004, y: -1.184}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
     m_DampingRatio: 1
@@ -1582,6 +1586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTorque: 800
   maxSpeed: 800
+  rotationTorquePerKg: 8.33
 --- !u!82 &1225439034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1688,7 +1693,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1243388411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.262, y: -1.25, z: 0}
+  m_LocalPosition: {x: -1.409, y: -1.184, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1225439028}
