@@ -7,6 +7,9 @@ public class GameSettings : MonoBehaviour {
 
     public AudioClip[] hitClips;
 
+    public GameObject dropOffEffect;
+    public AudioClip dropOffSound;
+
     public void Awake() {
         instance = this;
     }

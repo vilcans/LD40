@@ -33,4 +33,12 @@ public class Box : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    public void DropOff() {
+        Vector3 myPosition = transform.position;
+        GameObject particles = Instantiate(GameSettings.instance.dropOffEffect);
+        particles.transform.position = myPosition;
+        PackageSounds.instance.Play(GameSettings.instance.dropOffSound, myPosition);
+        Destroy(gameObject);
+    }
 }
