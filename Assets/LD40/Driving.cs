@@ -13,6 +13,8 @@ public class Driving : MonoBehaviour {
     private float currentSpeed;
 
     private AudioSource audio;
+    private AudioSource hornAudio;
+
     private float idleAudioPitch = .4f;
     private float maxSpeedPitch = 1.5f;
     private float engineSoundVolume;
@@ -24,6 +26,8 @@ public class Driving : MonoBehaviour {
         body = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
 
+        hornAudio = transform.Find("Horn").GetComponent<AudioSource>();
+
         engineSoundVolume = audio.volume;
         audio.volume = 0;
         engineStartTime = Time.time;
@@ -32,6 +36,10 @@ public class Driving : MonoBehaviour {
     void Update() {
         float time = Time.time - engineStartTime;
         audio.volume = Mathf.Pow(Mathf.Clamp01(time / engineSoundFadeInTime) * engineSoundVolume, .8f);
+
+        if(Input.GetButtonDown("Fire1")) {
+            hornAudio.Play();
+        }
     }
 
     private void FixedUpdate() {
