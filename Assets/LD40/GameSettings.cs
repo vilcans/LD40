@@ -7,6 +7,8 @@ public class GameSettings : MonoBehaviour {
 
     public AudioClip[] hitClips;
 
+    public AudioClip droppingSound;
+
     public GameObject dropOffEffect;
     public AudioClip dropOffSound;
 
