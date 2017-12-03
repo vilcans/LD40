@@ -8,7 +8,7 @@ public class Dropper : Interactible {
     private Vector3 dropPoint;
 
     void Awake() {
-        dropPoint = transform.Find("DropPoint").position;
+        dropPoint = transform.Find("DropPoint").position + Vector3.forward * .01f;
     }
 
     public override void Interact() {
