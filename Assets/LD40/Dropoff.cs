@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Dropoff : Interactible {
 
-    private List<Box> boxesDroppingOff;
+    private HashSet<Box> boxesDroppingOff;
 
     private float lastDrop;
 
     private float timeBetweenDrops = .5f;
 
     void Awake() {
-        boxesDroppingOff = new List<Box>();
+        boxesDroppingOff = new HashSet<Box>();
     }
 
     public override void Interact() {
@@ -32,9 +33,8 @@ public class Dropoff : Interactible {
         float now = Time.time;
         int numberOfBoxes = boxesDroppingOff.Count;
         if(now - lastDrop > timeBetweenDrops && numberOfBoxes != 0) {
-            int i = numberOfBoxes - 1;
-            Box box = boxesDroppingOff[i];
-            boxesDroppingOff.RemoveAt(i);
+            Box box = boxesDroppingOff.First();
+            boxesDroppingOff.Remove(box);
             box.DropOff();
             lastDrop = now;
         }
