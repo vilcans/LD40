@@ -21,6 +21,8 @@ public class Driving : MonoBehaviour {
     private float engineStartTime;
     private const float engineSoundFadeInTime = 5.5f;
 
+    private Interactible currentInteractible;
+
     private void Awake() {
         wheels = GetComponentsInChildren<WheelJoint2D>();
         body = GetComponent<Rigidbody2D>();
@@ -39,6 +41,28 @@ public class Driving : MonoBehaviour {
 
         if(Input.GetButtonDown("Fire1")) {
             hornAudio.Play();
+            if(currentInteractible != null) {
+                currentInteractible.Interact();
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        Interactible i = collision.gameObject.GetComponentInParent<Interactible>();
+        if(i != null) {
+            Debug.LogFormat("Entering interactible {0}", i);
+            currentInteractible = i;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        Interactible i = collision.gameObject.GetComponentInParent<Interactible>();
+        if(i != currentInteractible) {
+            Debug.LogFormat("Exiting not previously known trigger {0}", collision.gameObject);
+        }
+        else {
+            Debug.LogFormat("Exiting {0}", currentInteractible);
+            currentInteractible = null;
         }
     }
 
