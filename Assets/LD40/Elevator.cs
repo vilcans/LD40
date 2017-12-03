@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Elevator : MonoBehaviour {
+public class Elevator : Interactible {
 
     public bool shouldBeUp;
 
@@ -32,12 +32,6 @@ public class Elevator : MonoBehaviour {
         }
     }
 
-    void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            shouldBeUp = !shouldBeUp;
-        }
-    }
-
     private void FixedUpdate() {
         float targetLength = shouldBeUp ? 0 : totalDistance;
         currentLength = Mathf.SmoothDamp(currentLength, targetLength, ref changeVelocity, 5.0f);
@@ -45,5 +39,9 @@ public class Elevator : MonoBehaviour {
             ropes[i].joint.distance = ropes[i].startingLength - (totalDistance - currentLength);
             ropes[i].joint.connectedBody.WakeUp();
         }
+    }
+
+    public override void Interact() {
+        shouldBeUp = !shouldBeUp;
     }
 }
