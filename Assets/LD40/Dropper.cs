@@ -3,11 +3,18 @@ using UnityEngine.UI;
 
 public class Dropper : Interactible {
 
+    public AnimationCurve shakeAnimation;
+
+    private Transform mug;
+    private Vector3 mugPosition;
+
     private Transform item;
     private float? timeToDrop;
     private Vector3 dropPoint;
 
     void Awake() {
+        mug = transform.Find("Mug");
+        mugPosition = mug.position;
         dropPoint = transform.Find("DropPoint").position + Vector3.forward * .01f;
     }
 
@@ -22,19 +29,21 @@ public class Dropper : Interactible {
 
     void Update() {
         if(timeToDrop.HasValue) {
-            float value = timeToDrop.Value;
-            float newValue = value - Time.deltaTime;
-            if(value > .5f && newValue <= .5) {
+            float t = timeToDrop.Value;
+            float newT = t - Time.deltaTime;
+            if(t > .5f && newT <= .5) {
                 PackageSounds.instance.Play(GameSettings.instance.droppingSound, transform.position);
             }
-            value = newValue;
-            if(value <= 0) {
+            t = newT;
+            float shake = shakeAnimation.Evaluate(1 - t);
+            mug.position = mugPosition + Vector3.up * shake * .35f;
+            if(t <= 0) {
                 timeToDrop = null;
                 item.GetComponent<Rigidbody2D>().simulated = true;
                 item = null;
             }
             else {
-                timeToDrop = value;
+                timeToDrop = t;
             }
         }
     }

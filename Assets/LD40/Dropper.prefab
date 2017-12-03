@@ -165,6 +165,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1826a23d42a2a3e4bb3668a6c13ac784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.44046524
+      value: -0.000006698072
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.5696772
+      value: 0.59095025
+      inSlope: 2.744794
+      outSlope: 2.744794
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.8311479
+      value: -0.20017046
+      inSlope: -3.078431
+      outSlope: -3.078431
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.0006869
+      value: -0.0003386964
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!212 &212803477281523514
 SpriteRenderer:
   m_ObjectHideFlags: 1
