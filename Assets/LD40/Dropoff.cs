@@ -25,6 +25,9 @@ public class Dropoff : Interactible {
                 Debug.LogFormat("Strange, there is a box that is {0} m away: {1}", distance, obj);
                 continue;
             }
+            if(boxesDroppingOff.Count == 0) {
+                lastDrop = Time.time;
+            }
             boxesDroppingOff.Add(allBoxes[i]);
         }
     }
