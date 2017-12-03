@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Dropper : Interactible {
 
@@ -45,6 +46,7 @@ public class Dropper : Interactible {
         }
         GameObject obj = Instantiate(delivery.prefab, dropPoint, Quaternion.Euler(0, 0, Random.Range(0, 4) * 90f));
         obj.GetComponent<Rigidbody2D>().simulated = false;
+        obj.GetComponentInChildren<Text>().text = delivery.to.GetComponent<Dropoff>().address;
         item = obj.transform;
     }
 }

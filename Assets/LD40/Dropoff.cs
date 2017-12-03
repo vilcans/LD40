@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Dropoff : Interactible {
 
+    [TextArea]
+    public string address = "Unknown";
+
     private HashSet<Box> boxesDroppingOff;
 
     private float lastDrop;
