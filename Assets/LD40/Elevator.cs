@@ -33,8 +33,14 @@ public class Elevator : MonoBehaviour {
     }
 
     void Update() {
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            shouldBeUp = !shouldBeUp;
+        }
+    }
+
+    private void FixedUpdate() {
         float targetLength = shouldBeUp ? 0 : totalDistance;
-        currentLength = Mathf.SmoothDamp(currentLength, targetLength, ref changeVelocity, 2.0f);
+        currentLength = Mathf.SmoothDamp(currentLength, targetLength, ref changeVelocity, 5.0f);
         for(int i = 0, len = ropes.Length; i < len; ++i) {
             ropes[i].joint.distance = ropes[i].startingLength - (totalDistance - currentLength);
             ropes[i].joint.connectedBody.WakeUp();
