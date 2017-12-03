@@ -13,7 +13,7 @@ public class Driving : MonoBehaviour {
     private float currentSpeed;
 
     private AudioSource audio;
-    private float idleAudioPitch = .8f;
+    private float idleAudioPitch = .4f;
     private float maxSpeedPitch = 1.5f;
 
     private void Awake() {
@@ -47,8 +47,8 @@ public class Driving : MonoBehaviour {
         }
 
         audio.pitch = (
-            .5f * Mathf.LerpUnclamped(idleAudioPitch, maxSpeedPitch, Mathf.Abs(currentSpeed) / maxSpeed) +
-            .5f * Mathf.LerpUnclamped(idleAudioPitch, maxSpeedPitch, Mathf.Abs(wheelSpeed * 10) / maxSpeed)
+            .8f * Mathf.SmoothStep(idleAudioPitch, maxSpeedPitch, Mathf.Abs(currentSpeed) / maxSpeed) +
+            .2f * Mathf.LerpUnclamped(idleAudioPitch, maxSpeedPitch, Mathf.Abs(wheelSpeed * 10) / maxSpeed)
         );
 
         float rotation = Input.GetAxis("Horizontal") * -rotationTorquePerKg * body.mass;
