@@ -34,7 +34,7 @@ public class Elevator : Interactible {
 
     private void FixedUpdate() {
         float targetLength = shouldBeUp ? 0 : totalDistance;
-        currentLength = Mathf.SmoothDamp(currentLength, targetLength, ref changeVelocity, 5.0f);
+        currentLength = Mathf.SmoothDamp(currentLength, targetLength, ref changeVelocity, 1.0f, 3.0f);
         for(int i = 0, len = ropes.Length; i < len; ++i) {
             ropes[i].joint.distance = ropes[i].startingLength - (totalDistance - currentLength);
             ropes[i].joint.connectedBody.WakeUp();
