@@ -15,11 +15,23 @@ public class Driving : MonoBehaviour {
     private AudioSource audio;
     private float idleAudioPitch = .4f;
     private float maxSpeedPitch = 1.5f;
+    private float engineSoundVolume;
+    private float engineStartTime;
+    private const float engineSoundFadeInTime = 5.5f;
 
     private void Awake() {
         wheels = GetComponentsInChildren<WheelJoint2D>();
         body = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
+
+        engineSoundVolume = audio.volume;
+        audio.volume = 0;
+        engineStartTime = Time.time;
+    }
+
+    void Update() {
+        float time = Time.time - engineStartTime;
+        audio.volume = Mathf.Pow(Mathf.Clamp01(time / engineSoundFadeInTime) * engineSoundVolume, .8f);
     }
 
     private void FixedUpdate() {
