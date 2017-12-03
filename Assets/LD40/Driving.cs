@@ -3,7 +3,7 @@
 public class Driving : MonoBehaviour {
     public float maxTorque = 10000;
     public float maxSpeed = 500.0f;
-    private float rotationTorquePerKg = 75;
+    private float rotationTorquePerKg = 105;
     private float acceleration = 5;
 
     private WheelJoint2D[] wheels;
