@@ -42,6 +42,7 @@ public class Dropoff : Interactible {
             Box box = boxesDroppingOff.First();
             boxesDroppingOff.Remove(box);
             box.DropOff();
+            Logistics.instance.AddDelivery();
             lastDrop = now;
         }
     }

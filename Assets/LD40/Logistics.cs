@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Logistics : MonoBehaviour {
 
+    public static Logistics instance;
+
     public Text terminal;
 
     public class Delivery {
@@ -23,7 +25,12 @@ public class Logistics : MonoBehaviour {
     private float timeBetween = 8.0f;
     private float timeBetweenVariation = 4.0f;
 
+    private int numberOfDeliveries;
+    private int numberOfBreaks;
+
     void Awake() {
+        instance = this;
+
         dropoffs = FindObjectsOfType<Dropoff>();
         droppers = FindObjectsOfType<Dropper>();
         Random.InitState(42);
@@ -73,6 +80,22 @@ public class Logistics : MonoBehaviour {
             }
             s.Append("\n");
         }
+
+        s.Append("\nYour stats:\n-----------\nDelivered: ");
+        s.Append(numberOfDeliveries);
+        s.Append("\nUndelivered: ");
+        s.Append(numberOfBreaks);
+
         terminal.text = s.ToString();
+    }
+
+    public void AddDelivery() {
+        ++numberOfDeliveries;
+        UpdateTerminal();
+    }
+
+    public void AddBreak() {
+        ++numberOfBreaks;
+        UpdateTerminal();
     }
 }

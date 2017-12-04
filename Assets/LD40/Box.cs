@@ -33,6 +33,7 @@ public class Box : MonoBehaviour {
             AudioClip[] availableClips = GameSettings.instance.hitClips;
             AudioClip clip = availableClips[Random.Range(0, availableClips.Length)];
             PackageSounds.instance.Play(clip, transform.position);
+            Logistics.instance.AddBreak();
             Destroy(gameObject);
         }
     }
