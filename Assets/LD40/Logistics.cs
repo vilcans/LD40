@@ -20,9 +20,9 @@ public class Logistics : MonoBehaviour {
     private Dropoff[] dropoffs;
     private Dropper[] droppers;
 
-    private float timeToNextPickup = 5;
+    private float timeToNextPickup = 8;
 
-    private float timeBetween = 8.0f;
+    private float timeBetween = 6.0f;
     private float timeBetweenVariation = 4.0f;
 
     private int numberOfDeliveries;
