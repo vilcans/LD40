@@ -1,4 +1,4 @@
-PROJECT=PostmanPot
+PROJECT=ImDrivingMyTruck
 VERSION=0.1.0
 FILENAME=$(PROJECT)-$(VERSION)
 RELEASE_DIR=Build/release
