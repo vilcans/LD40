@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 
 public class Driving : MonoBehaviour {
+    public static Driving instance;
+
     public float maxTorque = 10000;
     public float maxSpeed = 500.0f;
 
@@ -28,6 +30,8 @@ public class Driving : MonoBehaviour {
     private Interactible currentInteractible;
 
     private void Awake() {
+        instance = this;
+
         wheels = GetComponentsInChildren<WheelJoint2D>();
         body = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
@@ -73,7 +77,7 @@ public class Driving : MonoBehaviour {
         UpdateHelpText();
     }
 
-    private void UpdateHelpText() {
+    public void UpdateHelpText() {
         if(currentInteractible == null) {
             helpText.CrossFadeColor(new Color(0, 0, 0, 0), 1.0f, true, true, false);
         }

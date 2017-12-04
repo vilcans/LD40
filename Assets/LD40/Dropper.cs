@@ -32,6 +32,9 @@ public class Dropper : Interactible {
         if(item == null) {
             return "There is no package to pick up at " + mailCenterName;
         }
+        else if(timeToDrop.HasValue) {
+            return "Deliver to " + item.GetComponent<Box>().destination.address;
+        }
         else {
             return "Honk to pick up the package at " + mailCenterName;
         }

@@ -62,23 +62,22 @@ public class Logistics : MonoBehaviour {
         delivery.from.AddDelivery(delivery);
 
         UpdateTerminal();
+        Driving.instance.UpdateHelpText();
     }
 
     void UpdateTerminal() {
         var s = new StringBuilder();
         for(int i = 0, len = droppers.Length; i < len; ++i) {
             Dropper d = droppers[i];
-            s.Append("C");
-            s.Append(i + 1);
-            s.Append("\n");
+            s.Append(d.mailCenterName);
+            s.Append(":\n");
             if(d.item != null) {
-                s.Append(" -> ");
                 s.Append(d.item.GetComponentInChildren<Box>().destination.address);
             }
             else {
-                s.Append(" No pickup");
+                s.Append("No pickup");
             }
-            s.Append("\n");
+            s.Append("\n\n");
         }
 
         s.Append("\nYour stats:\n-----------\nDelivered: ");
