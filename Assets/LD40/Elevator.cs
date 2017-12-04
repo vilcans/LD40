@@ -44,4 +44,8 @@ public class Elevator : Interactible {
     public override void Interact() {
         shouldBeUp = !shouldBeUp;
     }
+
+    public override string GetHelp() {
+        return "Honk to make elevator go " + (shouldBeUp ? "down" : "up");
+    }
 }

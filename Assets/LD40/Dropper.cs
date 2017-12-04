@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Dropper : Interactible {
 
+    public string mailCenterName = "C?";
     public AnimationCurve shakeAnimation;
 
     private Transform mug;
@@ -24,6 +25,15 @@ public class Dropper : Interactible {
             if(item != null) {
                 timeToDrop = 1.0f;
             }
+        }
+    }
+
+    public override string GetHelp() {
+        if(item == null) {
+            return "There is no package to pick up at " + mailCenterName;
+        }
+        else {
+            return "Honk to pick up the package at " + mailCenterName;
         }
     }
 

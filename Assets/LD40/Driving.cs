@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Driving : MonoBehaviour {
     public float maxTorque = 10000;
     public float maxSpeed = 500.0f;
+
+    public Text helpText;
+
     private float rotationTorquePerKg = 105;
     private float acceleration = 5;
 
@@ -43,6 +47,7 @@ public class Driving : MonoBehaviour {
             hornAudio.Play();
             if(currentInteractible != null) {
                 currentInteractible.Interact();
+                UpdateHelpText();
             }
         }
     }
@@ -50,8 +55,9 @@ public class Driving : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         Interactible i = collision.gameObject.GetComponentInParent<Interactible>();
         if(i != null) {
-            Debug.LogFormat("Entering interactible {0}", i);
+            //Debug.LogFormat("Entering interactible {0}", i);
             currentInteractible = i;
+            UpdateHelpText();
         }
     }
 
@@ -61,8 +67,19 @@ public class Driving : MonoBehaviour {
             Debug.LogFormat("Exiting not previously known trigger {0}", collision.gameObject);
         }
         else {
-            Debug.LogFormat("Exiting {0}", currentInteractible);
+            //Debug.LogFormat("Exiting {0}", currentInteractible);
             currentInteractible = null;
+        }
+        UpdateHelpText();
+    }
+
+    private void UpdateHelpText() {
+        if(currentInteractible == null) {
+            helpText.CrossFadeColor(new Color(0, 0, 0, 0), 1.0f, true, true, false);
+        }
+        else {
+            helpText.text = currentInteractible.GetHelp();
+            helpText.CrossFadeColor(new Color(0, 0, 0, 1), .05f, true, true, false);
         }
     }
 
