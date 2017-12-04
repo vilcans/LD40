@@ -22,6 +22,9 @@ public class Dropoff : Interactible {
         Vector3 myPosition = transform.position;
         Debug.LogFormat("Found {0} boxes", allBoxes.Length);
         for(int i = 0, len = allBoxes.Length; i < len; ++i) {
+            if(allBoxes[i].destination != this) {
+                continue;
+            }
             GameObject obj = allBoxes[i].gameObject;
             float distance = Vector3.Distance(obj.transform.position, myPosition);
             if(distance >= 5) {
