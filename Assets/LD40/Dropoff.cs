@@ -41,7 +41,7 @@ public class Dropoff : Interactible {
         }
         GameObject obj = box.gameObject;
         float distance = Vector3.Distance(obj.transform.position, myPosition);
-        if(distance >= 5) {
+        if(distance >= 10) {
             //Debug.LogFormat("Strange, there is a box that is {0} m away: {1}", distance, obj);
             return false;
         }
